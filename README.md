@@ -14,7 +14,7 @@ To use the package-obfuscator either use the cli:
 package-obfuscate my_secret_package
 ```
 
-The use the package-obfuscator in a script:
+To use the package-obfuscator in a script:
 
 ```python
 import os
