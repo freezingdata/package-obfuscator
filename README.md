@@ -47,3 +47,40 @@ The CLI provides the following options
 | `package_dir`            | The absolute or relative path to the package directory.                                                                                                                       | Required            |
 | `output`                 | The absolute or relative path to the directory in which to place the obfuscated files. If not provided the obfuscation will take place within the `package_dir`.              | Optional            |
 | `force_output_overwrite` | If the output folder exists when running the code the obfuscator will exit with an exception. If you want to force an overwrite you should provide this argument with `True`. | Optional            |
+
+## When to use the `package-obfuscator`
+
+The `package-obfuscator` should be used prior to releasing your python package in any way. The easiest way is to use the following code structure. Let's assume you are developing a module called `my_module`. Your directory structure will look something like this:
+
+```
+my-module-repository
+  > my_module_source
+      > sub_module
+          script2.py
+      __init__.py
+      script1.py
+  setup.py
+```
+
+Then it is suggested to use the `package-obfuscator` as a package in the `setup.py`.
+
+```python
+import package_obfuscator
+package_obfuscator.obfuscate('my_module_source', output='my_module')
+
+setup(
+    name='my_module',
+    version='0.0.1',
+    packages=find_packages(include=['my_module', 'my_module.*'])
+)
+```
+
+Your wheel will then only include obfuscated code.
+
+## How does the obfuscation work?
+
+The obfuscation works by compiling the code within each package-related python file into binary code. The binary code is then saved into separate files. The original file will execute the binary file using the `exec` command and the `marshal` library.
+
+## How safe is the obfuscation method?
+
+It is important to note that the obfuscation is not completely possible. It is possible to reverse-engineer your code using the binary files. But even when converting the code back only excerpts of the code will be humanly readable straight away. This method of obfuscation is recommended for code that is not mission-critical but should nevertheless not be deployed as human-readable code.
