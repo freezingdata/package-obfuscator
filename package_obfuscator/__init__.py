@@ -1,1 +1,2 @@
-from .obfuscate_wrapper import obfuscate, obfuscate_file
+from .obfuscate_wrapper import obfuscate
+from .file_obfuscator import obfuscate_file

@@ -1,20 +1,35 @@
-import os
-from setuptools import setup, find_packages
+from distutils.core import setup
+import os.path
+import setuptools
 
-def read_requirements():
-    current_dir = os.path.dirname(os.path.realpath(__file__))
-    requirements_txt = os.path.join(current_dir, 'requirements.txt')
-    with open(requirements_txt, 'r') as f:
-        return f.read().splitlines()
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
-def get_version():
-    return os.environ.get('CI_COMMIT_TAG') if os.environ.get('CI_COMMIT_TAG') else 'v0.0.1'
-
-
-setup(
-    name='package_obfuscator',
-    version=get_version(),
-    packages=find_packages(include=['package_obfuscator']),
-    scripts=["package_obfuscator/scripts/package_obfuscator.py"],
-    install_requires=read_requirements()
+setuptools.setup(
+    name="package_obfuscator",
+    packages=setuptools.find_packages(),
+    version="0.0.1",
+    license="MIT",
+    description="An obfuscator for python packages.",
+    author="Henry Müssemann",
+    author_email="henry@muessemann.de",
+    url="https://github.com/bubblegumsoldier/package-obfuscator",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    download_url="https://github.com/bubblegumsoldier/package-obfuscator/tarball/master",
+    keywords=["obfuscator"],
+    install_requires=[],
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
+        "Topic :: Software Development :: Build Tools",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+    ],
+    entry_points={"console_scripts": [
+        "package_obfuscate=package_obfuscator.cli:main"]},
 )

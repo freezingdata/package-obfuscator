@@ -1,6 +1,4 @@
 import argparse
-import shutil
-import os
 from package_obfuscator import obfuscate
 
 
@@ -17,6 +15,5 @@ def main():
                         default=None,
                         help="Enable the overwrite of the output folder if the output folder already exists.")
     args = parser.parse_args()
-    print(args)
-    obfuscate(args['package_location'], output=args.output, force_output_overwrite=args.force_overwrite)
-    
+    obfuscate(args['package_location'], output=args.output,
+              force_output_overwrite=args.force_overwrite)
