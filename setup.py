@@ -1,9 +1,8 @@
 from distutils.core import setup
-import os.path
 import setuptools
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+with open("README.md", "r") as f:
+    long_description = f.read()
 
 setuptools.setup(
     name="package_obfuscator",
@@ -31,5 +30,5 @@ setuptools.setup(
         "Programming Language :: Python :: 3.10",
     ],
     entry_points={"console_scripts": [
-        "package_obfuscate=package_obfuscator.cli:main"]},
+        "package-obfuscate=package_obfuscator.cli:main"]},
 )

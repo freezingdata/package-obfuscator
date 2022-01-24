@@ -11,7 +11,7 @@ def main():
                         default=None,
                         help="The output path of where to put the obfuscated contents.")
     parser.add_argument("-f", "--force-overwrite",
-                        type=str,
+                        type=bool,
                         default=None,
                         help="Enable the overwrite of the output folder if the output folder already exists.")
     args = parser.parse_args()
