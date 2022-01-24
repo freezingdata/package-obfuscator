@@ -83,4 +83,4 @@ The obfuscation works by compiling the code within each package-related python f
 
 ## How safe is the obfuscation method?
 
-It is important to note that the obfuscation is not completely possible. It is possible to reverse-engineer your code using the binary files. But even when converting the code back only excerpts of the code will be humanly readable straight away. This method of obfuscation is recommended for code that is not mission-critical but should nevertheless not be deployed as human-readable code.
+It is important to note that the obfuscation is not completely secure. It is possible to reverse-engineer your code using the binary files. But even when converting the code back only excerpts of the code will be humanly readable straight away. This method of obfuscation is recommended for code that is not mission-critical but should nevertheless not be deployed as human-readable code.
