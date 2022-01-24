@@ -38,10 +38,7 @@ def obfuscate_file(path_to_python):
     py_compile.compile(
         renamed_file, cfile=output_pyc_filepath)
 
-    # Remove facebook_original.py
-    os.remove(renamed_file)
-
-    # Writing binary parse code to facebook.py
+    # Writing binary parse code to original file
     new_code = code_template.format(py_cache_folder_name, new_filename_pyc)
     with open(path_to_python, 'w') as f:
         f.write(new_code)
