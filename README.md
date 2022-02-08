@@ -8,13 +8,13 @@ To install the package-obfuscator run the following command:
 pip install package-obfuscator
 ```
 
-To use the package-obfuscator either use the cli:
+To use the package-obfuscator either use the cli...
 
 ```
 package-obfuscate my_secret_package
 ```
 
-To use the package-obfuscator in a script:
+or use the package-obfuscator in a script:
 
 ```python
 import os
@@ -79,7 +79,7 @@ Your wheel will then only include obfuscated code.
 
 ## How does the obfuscation work?
 
-The obfuscation works by compiling the code within each package-related python file into binary code. The binary code is then saved into separate files. The original file will execute the binary file using the `exec` command and the `marshal` library.
+The obfuscation works by compiling the code within each package-related python file into binary code. It will find all python files (`*.py`) recursively and ignore all other files. The binary code is then saved into separate files. The original file will execute the binary file using the `exec` command and the `marshal` library.
 
 ## How safe is the obfuscation method?
 
