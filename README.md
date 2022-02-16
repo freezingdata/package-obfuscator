@@ -1,5 +1,9 @@
 # package-obfuscator
 
+## Disclaimer
+
+This package was developed as part of the [SocialNetworkHarvester](https://socialnetworkharvester.de/) by the Freezingdata GmbH. We found the obfuscation of packages to be essential for our work so we developed this package. The package will be maintained as long as we need the functionality for our own software. We do not and cannot guarantee long-term maintenance, nor can be guarantee support in issues. We will nevertheless try to answer all incoming questions in a timely manner. If you want to contribute feel free to create a merge request and open an issue discussing a potential bug or feature. You are free to use this software in any personal or commercial project.
+
 ## Quick-Start
 
 To install the package-obfuscator run the following command:
