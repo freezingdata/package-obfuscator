@@ -42,3 +42,4 @@ def obfuscate_file(path_to_python):
     new_code = code_template.format(py_cache_folder_name, new_filename_pyc)
     with open(path_to_python, 'w') as f:
         f.write(new_code)
+    os.remove(renamed_file)
