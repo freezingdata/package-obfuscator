@@ -7,7 +7,7 @@ with open("README.md", "r") as f:
 setuptools.setup(
     name="package_obfuscator",
     packages=setuptools.find_packages(),
-    version="0.0.1",
+    version="0.0.2",
     license="MIT",
     description="An obfuscator for python packages.",
     author="Henry Müssemann",

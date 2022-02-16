@@ -15,5 +15,5 @@ def main():
                         default=None,
                         help="Enable the overwrite of the output folder if the output folder already exists.")
     args = parser.parse_args()
-    obfuscate(args['package_location'], output=args.output,
+    obfuscate(args.package_location, output=args.output,
               force_output_overwrite=args.force_overwrite)

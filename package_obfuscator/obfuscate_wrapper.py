@@ -1,6 +1,6 @@
 import os
 import shutil
-from .file_obfuscator import obfuscate_file, py_cache_folder_name
+from .file_obfuscator import obfuscate_file
 import logging
 
 
@@ -9,7 +9,7 @@ def obfuscate(path, *args, **kwargs):
         obfuscate_file(path)
         return
     package_location = path
-    if 'output' in kwargs:
+    if 'output' in kwargs and kwargs['output']:
         if not 'force_output_overwrite' in kwargs or not kwargs['force_output_overwrite']:
             if os.path.exists(kwargs['output']):
                 raise Exception(
@@ -18,10 +18,11 @@ def obfuscate(path, *args, **kwargs):
             shutil.rmtree(kwargs['output'])
         shutil.copytree(path, kwargs['output'])
         package_location = kwargs['output']
-    return _obfuscate_package_in_place(package_location)
+    return _obfuscate_package_in_place(package_location, *args, **kwargs)
 
 
-def _obfuscate_package_in_place(folder):
+def _obfuscate_package_in_place(folder, *args, **kwargs):
+    py_cache_folder_name = kwargs["py_cache_folder_name"] if "py_cache_folder_name" in kwargs else '__custom_pycache__'
     blacklist = ['..', '.', '__pycache__', '__init__.py', py_cache_folder_name]
     files_and_folder = [file_or_folder for file_or_folder in os.listdir(
         folder) if file_or_folder not in blacklist]
@@ -31,7 +32,7 @@ def _obfuscate_package_in_place(folder):
         sub_folder for sub_folder in files_and_folder if os.path.isdir(os.path.join(folder, sub_folder))]
     for file in files:
         logging.debug(f'Obfuscating file: {file}')
-        obfuscate_file(os.path.join(folder, file))
+        obfuscate_file(os.path.join(folder, file), *args, **kwargs)
     for sub_folder in sub_folders:
         logging.debug(f'Obfuscating folder: {sub_folder}')
-        _obfuscate_package_in_place(os.path.join(folder, sub_folder))
+        _obfuscate_package_in_place(os.path.join(folder, sub_folder), *args, **kwargs)
