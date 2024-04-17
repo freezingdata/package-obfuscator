@@ -11,5 +11,4 @@ echo "Creating python=$py_version environment for test..."
 find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
 rm -rf test/test_module_output
 rm -rf .pytest_cache
-rm /dev/null
 done
