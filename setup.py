@@ -1,21 +1,25 @@
+import os
 from distutils.core import setup
 import setuptools
 
 with open("README.md", "r") as f:
     long_description = f.read()
 
+# Get version from the environment, default to '0.0.2' if not set
+version = os.getenv("PACKAGE_VERSION", "0.0.2")
+
 setuptools.setup(
     name="package_obfuscator",
     packages=setuptools.find_packages(),
-    version="0.0.2",
+    version=version,
     license="MIT",
     description="An obfuscator for python packages.",
     author="Henry Müssemann",
-    author_email="henry@muessemann.de",
+    author_email="hm@hm-dev-consulting.de",
     url="https://github.com/bubblegumsoldier/package-obfuscator",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    download_url="https://github.com/bubblegumsoldier/package-obfuscator/tarball/master",
+    download_url=f"https://github.com/bubblegumsoldier/package-obfuscator/tarball/{version}",
     keywords=["obfuscator"],
     install_requires=[],
     classifiers=[
@@ -29,6 +33,5 @@ setuptools.setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
     ],
-    entry_points={"console_scripts": [
-        "package-obfuscate=package_obfuscator.cli:main"]},
+    entry_points={"console_scripts": ["package-obfuscate=package_obfuscator.cli:main"]},
 )
