@@ -6,7 +6,7 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 # Get version from the environment, default to '0.0.2' if not set
-version = os.getenv("PACKAGE_VERSION", "0.0.2")
+version = os.getenv("PACKAGE_VERSION", "0.0.1")
 
 setuptools.setup(
     name="package_obfuscator",
