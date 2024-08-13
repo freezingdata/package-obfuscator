@@ -38,7 +38,7 @@ The CLI provides the following options
 |:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| -----------------: |
 | `package_location` (positional) | An absolute or relative path to the package that should be obfuscated                                                                                                                                      |           required |
 | `--output` / `-o`               | An absolute or relative path to a folder in which to place the obfuscated package content. If this argument is not provided the obfuscation will take place in the originally provided `package_location`. | `package_location` |
-| `--force-overwrite` / `-f`      | If the output folder is existent the obfuscator will exit. You can disable this behaviour and achieve an hard overwrite if you add this option                                                             |                    |
+| `--force-overwrite` / `-f`      | If the output folder is existent the obfuscator will exit. You can disable this behaviour and achieve a hard overwrite if you add this option                                                              |                    |
 | `--short-filenames` / `-s`      | By adding this option and setting it to `True`, shorter filenames will be generated for the obfuscated files by avoiding the default random uuid in filenames.                                             |                    |
 
 ## Python API
