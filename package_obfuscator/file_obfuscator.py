@@ -32,8 +32,8 @@ def obfuscate_file(path_to_python, *args, **kwargs):
     base_path = os.path.dirname(path_to_python)
     filename = os.path.basename(path_to_python)
     filename_clean = filename.replace('.py', '')
-    suffix = _random_suffix()
-    interim_python_file_name = f'{filename_clean}_{suffix}.py'
+    suffix = f"_{_random_suffix()}" if not kwargs.get("short_filenames", False) else ""
+    interim_python_file_name = f'{filename_clean}{suffix}.py'
     os.rename(path_to_python, os.path.join(base_path,
               interim_python_file_name))
     renamed_file = os.path.join(

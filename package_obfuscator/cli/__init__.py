@@ -14,6 +14,10 @@ def main():
                         type=bool,
                         default=None,
                         help="Enable the overwrite of the output folder if the output folder already exists.")
+    parser.add_argument("-s", "--short-filename",
+                        type=bool,
+                        default=None,
+                        help="Enable short names for the files.")
     args = parser.parse_args()
     obfuscate(args.package_location, output=args.output,
-              force_output_overwrite=args.force_overwrite)
+              force_output_overwrite=args.force_overwrite, short_filenames=args.short_filename)
