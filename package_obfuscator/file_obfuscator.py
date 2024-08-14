@@ -33,17 +33,17 @@ def obfuscate_file(path_to_python, *args, **kwargs):
     filename = os.path.basename(path_to_python)
     filename_clean = filename.replace('.py', '')
     suffix = f"_{_random_suffix()}" if not kwargs.get("short_filenames", False) else ""
-    interim_python_file_name = f'{filename_clean}{suffix}.py'
+    interim_python_file_name = f'{filename_clean}{suffix}_.py'
     os.rename(path_to_python, os.path.join(base_path,
               interim_python_file_name))
     renamed_file = os.path.join(
         base_path, interim_python_file_name)
 
     file_suffix = kwargs["file_suffix"] if "file_suffix" in kwargs else ".cpython-xxx.pyc"
-    py_cache_folder_name = kwargs["py_cache_folder_name"] if "py_cache_folder_name" in kwargs else '__custom_pycache__'
+    py_cache_folder_name = kwargs.get("py_cache_folder_name", None) or '__custom_pycache__'
     # Compile renamed_file.py
     new_filename_pyc = interim_python_file_name.replace(
-        '.py', file_suffix)
+        '_.py', file_suffix)
     output_pyc_filepath = os.path.join(
         base_path, py_cache_folder_name, new_filename_pyc)
     py_compile.compile(
